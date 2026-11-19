@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Front Desk AI — Size Grabber",
+  "version": "1.0.0",
+  "description": "Grab live title, price, photo, and exact Size Guide from any open shopping tab (Ajio, H&M, Zara, Myntra, Amazon, Flipkart) into Front Desk AI (frontdeskai.shop).",
+  "permissions": ["activeTab", "scripting", "tabs"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Send Product & Size Chart to Front Desk AI"
+  }
+}

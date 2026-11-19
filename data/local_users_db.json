@@ -1,0 +1,19 @@
+[
+  {
+    "id": "usr_1794629239797_2537a691",
+    "name": "Kartik Sharma",
+    "email": "kartik.test@gmail.com",
+    "phone": null,
+    "emailVerified": true,
+    "phoneVerified": false,
+    "authProvider": "google",
+    "googleSub": null,
+    "avatarUrl": null,
+    "salt": "ff92e0240a286cef16ea8686aaa9ab18",
+    "passwordHash": "50868a52f10bfb2f055ee67578bc5d1072b5e51e598883d307bec8183ddee1fd886fd69ad0f3c47035cd8c797e454cc3895c6f230e6681a6dd4a451cc99be73e",
+    "role": "user",
+    "profile": null,
+    "createdAt": "2026-11-14T04:07:19.797Z",
+    "updatedAt": "2026-11-14T04:07:19.827Z"
+  }
+]

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Front Desk AI — Size Grabber</title>
+  <style>
+    body {
+      width: 315px;
+      margin: 0;
+      padding: 14px;
+      background: #0d0e0f;
+      color: #f3f4f6;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+    }
+    .brand {
+      color: #c8ff3d;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+    .desc {
+      color: #9ca3af;
+      font-family: system-ui, sans-serif;
+      font-size: 12px;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    select {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 6px 8px;
+      background: #171717;
+      color: #e5e7eb;
+      border: 1px solid #2b2b2b;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 11px;
+    }
+    button {
+      width: 100%;
+      padding: 10px 12px;
+      border: none;
+      border-radius: 4px;
+      background: #c8ff3d;
+      color: #0d0e0f;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+    }
+    button:hover { opacity: 0.92; }
+    .status {
+      margin-top: 10px;
+      font-size: 11px;
+      color: #d1d5db;
+      line-height: 1.4;
+    }
+    .warn { color: #fbbf24; }
+    .ok { color: #c8ff3d; }
+  </style>
+</head>
+<body>
+  <div class="brand">■ FRONT DESK AI GRABBER</div>
+  <div class="desc">
+    Grabs live product title, price, photo &amp; Size Guide from any shopping tab directly into <strong>Front Desk AI</strong>.
+  </div>
+  <select id="targetOrigin" aria-label="Select Front Desk AI destination">
+    <option value="auto">Auto (Open tab or localhost:5173)</option>
+    <option value="https://frontdeskai.shop">Live Site (frontdeskai.shop)</option>
+    <option value="http://localhost:5173">Local Dev (localhost:5173)</option>
+  </select>
+  <button id="grabBtn">Send Live Page to Front Desk AI →</button>
+  <div id="status" class="status"></div>
+  <script src="popup.js"></script>
+</body>
+</html>
