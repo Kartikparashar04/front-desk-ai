@@ -407,10 +407,14 @@ async function fetchLiveCdnImage(rawUrl, brand, category, color) {
         if (host.includes("myntra") && ul.includes("myntassets.com")) return true;
         if (host.includes("flipkart") && (ul.includes("flixcart.com") || ul.includes("flipkart.com"))) return true;
         if (host.includes("meesho") && ul.includes("meesho.com")) return true;
+        if (host.includes("amazon") && (ul.includes("media-amazon.com") || ul.includes("ssl-images-amazon.com"))) return true;
+        if (host.includes("zara") && ul.includes("zara.net")) return true;
+        if (host.includes("hm") && ul.includes("hm.com")) return true;
         return false;
       });
       if (storeCdn) return storeCdn;
-      if (murls.length > 0) return murls[0];
+      // If store CDN was not in search results, return null so high-res category photography is used
+      return null;
     }
   } catch {
     // fallback
@@ -846,7 +850,21 @@ export async function fetchLiveProductData(rawUrl) {
     const finalPrice = parsed?.price || fallback.price;
 
     let finalImage = parsed?.image || fallback.image;
-    if (finalImage && (finalImage.toLowerCase().includes("logo") || finalImage.includes("ytimg") || finalImage.includes("banner"))) {
+    const isJunkImage = (img) => {
+      if (!img) return true;
+      const lower = img.toLowerCase();
+      return (
+        lower.includes("logo") ||
+        lower.includes("banner") ||
+        lower.includes("vector") ||
+        lower.includes("icon") ||
+        lower.includes("ytimg") ||
+        lower.includes("favicon") ||
+        lower.includes("simpleflying") ||
+        lower.includes("aircraft")
+      );
+    };
+    if (isJunkImage(finalImage)) {
       finalImage = fallback.image;
     }
 
