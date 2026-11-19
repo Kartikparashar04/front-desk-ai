@@ -839,11 +839,17 @@ export async function fetchLiveProductData(rawUrl) {
       fallback = await enhanceWithGoogleCloudAI(rawUrl, platform, urlObj.pathname, liveSnippet, fallback);
     } catch {}
 
-    const isGarbageName = !parsed?.productName || ["Products", "Product", "Online Shopping"].includes(parsed.productName.trim());
+    const garbageTitleWords = ["products", "product", "online shopping", "site maintenance", "access denied", "attention required", "just a moment", "security check", "403 forbidden", "404 not found", "robot challenge"];
+    const isGarbageName = !parsed?.productName || garbageTitleWords.some((w) => (parsed.productName || "").toLowerCase().includes(w));
     const finalProductName = !isGarbageName ? parsed.productName : fallback.productName;
-    const finalBrandName = parsed?.brandName || fallback.brandName;
+    const finalBrandName = (parsed?.brandName && !garbageTitleWords.some((w) => (parsed.brandName || "").toLowerCase().includes(w))) ? parsed.brandName : fallback.brandName;
     const finalPrice = parsed?.price || fallback.price;
-    const finalImage = parsed?.image || fallback.image;
+
+    let finalImage = parsed?.image || fallback.image;
+    if (finalImage && (finalImage.toLowerCase().includes("logo") || finalImage.includes("ytimg") || finalImage.includes("banner"))) {
+      finalImage = fallback.image;
+    }
+
     const finalColor = parsed?.color || fallback.color;
     const finalMaterial = parsed?.material || fallback.material;
     const finalFitCut = parsed?.fitCut || fallback.fitCut;

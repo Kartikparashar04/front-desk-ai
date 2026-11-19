@@ -94,6 +94,7 @@ export default function UrlSizeInspector({ userProfile, onProductReady, onEditPr
         brandName: parsedProduct.brandName,
         origin: parsedProduct.platform,
         platform: parsedProduct.platform,
+        category: parsedProduct.category || "Topwear",
         color: parsedProduct.color || "Store Selection",
         material: parsedProduct.material,
         price: parsedProduct.price,

@@ -115,6 +115,7 @@ export default function App() {
                 brandName: resolvedBrand,
                 origin: base.platform,
                 platform: base.platform,
+                category: base.category || "Topwear",
                 color: base.color || "Store Selection",
                 material: base.material,
                 price: clipData.price || base.price,
